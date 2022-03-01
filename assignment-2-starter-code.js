@@ -35,7 +35,7 @@ myArray.forEach((x,i,myArray) => console.log(x,i,myArray));   // Parameter: (x,i
 // Original array is not affected
 console.log("Original array:");
 console.log(myArray);
-/*
+
 // MAP //
 Array.prototype.myMap = function() {
 
@@ -45,7 +45,7 @@ Array.prototype.myMap = function() {
 Array.prototype.mySome = function() {
 
 };
-*/
+
 // REDUCE //
 Array.prototype.myReduce = function(reduceFnc,initialValue) {
     let total=0;
@@ -151,10 +151,10 @@ console.log(pets.myIncludes('at'));
 console.log("Original array:");
 console.log(pets);
 
-/*// INDEXOF //
+// INDEXOF //
 Array.prototype.myIndexOf = function() {
 
-};*/
+};
 
 // PUSH //
 Array.prototype.myPush = function(...args) {  // Use rest parameter to accept any number of input arguments
@@ -179,7 +179,7 @@ myArray = [1,2,3,4,5];   // Array called by the function
 console.log("Push:");
 console.log(myArrayPush.push(6,7,8));   // Output returned array length
 console.log(myArrayPush);   // Output [1,2,3,4,5,6,7,8]
-/*
+
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function() {
 
@@ -193,4 +193,4 @@ Object.myKeys = function() {
 // VALUES //
 Object.myValues = function() {
 
-}; */
+}; 
