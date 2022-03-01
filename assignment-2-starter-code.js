@@ -42,9 +42,41 @@ Array.prototype.myMap = function() {
 };
 
 // SOME //
-Array.prototype.mySome = function() {
-
+Array.prototype.mySome = function(callBackFunction) {
+    for (let i = 0; i < this.length; i++) {
+        if(this[i] === undefined) continue;
+        if(callBackFunction(this[i], i, this)) return true;
+      }
+    return false;
 };
+
+//TEST1
+const array = [1, 2, 3, 4, 5];
+const even = (element) => element % 2 === 0;
+//TEST2,3
+function isBiggerThan10(element, index, array) {
+  return element > 10;
+};
+//TEST4,5
+const fruits = ['apple', 'banana', 'mango', 'guava'];
+function checkAvailability(arr, val) {
+  return arr.mySome(function(arrVal) {
+    return val === arrVal;
+  });
+};
+
+console.log("TEST1 output:"+array.mySome(even));
+console.log("TEST2 output:"+[2, 5, 8, 1, 4].mySome(isBiggerThan10));
+console.log("TEST3 output:"+[12, 5, 8, 1, 4].mySome(isBiggerThan10));
+console.log("TEST4 output:"+checkAvailability(fruits, 'kela'));
+console.log("TEST5 output:"+checkAvailability(fruits, 'banana'));
+console.log("TEST1 expected : true");
+console.log("TEST2 expected : false");
+console.log("TEST3 expected : true");
+console.log("TEST4 expected : false");
+console.log("TEST5 expected : true");
+//SOME END//
+
 
 // REDUCE //
 Array.prototype.myReduce = function(reduceFnc,initialValue) {
@@ -181,9 +213,37 @@ console.log(myArrayPush.push(6,7,8));   // Output returned array length
 console.log(myArrayPush);   // Output [1,2,3,4,5,6,7,8]
 
 // LASTINDEXOF //
-Array.prototype.myLastIndexOf = function() {
-
+Array.prototype.myLastIndexOf = function(item,index) {
+	index===undefined ? startingIndex=this.length-1:startingIndex=index;
+	for (let i = startingIndex; i >=0 ; i--) {
+        if(this[i] === undefined) continue;
+        if(this[i] === item) return i;
+    }
+    return -1;
 };
+
+//test1-5
+var numbers = [2, 5, 9, 2];
+//test6-8
+var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+
+console.log("TEST1 output:"+numbers.lastIndexOf(2));
+console.log("TEST2 output:"+numbers.lastIndexOf(7));
+console.log("TEST3 output:"+numbers.lastIndexOf(2, 3));
+console.log("TEST4 output:"+numbers.lastIndexOf(2, 2));
+console.log("TEST5 output:"+numbers.lastIndexOf(2, -2));
+console.log("TEST6 output:"+array.myLastIndexOf("a"));
+console.log("TEST7 output:"+array.myLastIndexOf("c"));
+console.log("TEST8 output:"+array.myLastIndexOf("a",3));
+console.log("TEST1 expected : 3");
+console.log("TEST2 expected : -1");
+console.log("TEST3 expected : 3");
+console.log("TEST4 expected : 0");
+console.log("TEST5 expected : 0");
+console.log("TEST6 expected : 4");
+console.log("TEST7 expected : 3");
+console.log("TEST8 expected : 2");
+// LASTINDEXOF END //
 
 // KEYS //
 Object.myKeys = function() {
