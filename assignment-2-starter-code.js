@@ -264,5 +264,5 @@ Object.myValues = function(obj) {
         valArr.push(obj[v]);
     }
 
-    return varArr;
+    return valArr;
 }; 
