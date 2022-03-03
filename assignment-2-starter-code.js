@@ -246,7 +246,7 @@ console.log("TEST8 expected : 2");
 // LASTINDEXOF END //
 
 // KEYS //
-Object.myKeys = function() {
+Object.myKeys = function(obj) {
     let keyArr = [];
     for (var k in obj)
     {
@@ -257,7 +257,7 @@ Object.myKeys = function() {
 };
 
 // VALUES //
-Object.myValues = function() {
+Object.myValues = function(obj) {
     let valArr = [];
     for (var v in obj)
     {
