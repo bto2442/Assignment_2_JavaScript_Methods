@@ -247,10 +247,22 @@ console.log("TEST8 expected : 2");
 
 // KEYS //
 Object.myKeys = function() {
+    let keyArr = [];
+    for (var k in obj)
+    {
+        keyArr.push(k);
+    }
 
+    return keyArr;
 };
 
 // VALUES //
 Object.myValues = function() {
+    let valArr = [];
+    for (var v in obj)
+    {
+        valArr.push(obj[v]);
+    }
 
+    return varArr;
 }; 
