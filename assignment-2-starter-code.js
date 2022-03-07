@@ -37,9 +37,46 @@ console.log("Original array:");
 console.log(myArray);
 
 // MAP //
-Array.prototype.myMap = function() {
-
+Array.prototype.myMap = function(callback) {
+    const resultArray = [];
+    // "this" keyword refers to the array being called.
+    for (let i = 0; i < this.length; i++){
+        // callbackFn can take up to 3 input parameters:
+        // element
+        // element, index
+        // element, index, array
+        // pushes the element of the called array into the new array
+        resultArray.push(callback(this[i], i, this));
+    }
+    return resultArray;
 };
+
+// TEST //
+// Test myMap against the native map to ensure that myMap works as the same as map
+let myArrayMap = [1,2,3,4,5];   // Array called by the function
+
+// Test with 1 parameter: element
+console.log("myMap (1 paramter): element");
+const myDouble = myArrayMap.myMap(x => x * 2);
+console.log(myDouble);   
+
+console.log("map (1 paramter): element");
+const double = myArrayMap.map(x => x * 2);   
+console.log(double); 
+
+// Test with 2 parameters: element, index
+console.log("myMap (2 parameters): element, index");
+myArrayMap.myMap((x,i) => console.log(x,i));
+
+console.log("map (2 parameters): element, index");
+myArrayMap.map((x,i) => console.log(x,i));
+
+// Test with 3 parameters: element, index, array
+console.log("myMap (3 parameters): element, index, array");
+myArrayMap.myMap((x,i,myArrayMap) => console.log(x,i,myArrayMap));
+
+console.log("map (3 parameters): element, index, array");
+myArrayMap.map((x,i,myArrayMap) => console.log(x,i,myArrayMap));
 
 // SOME //
 Array.prototype.mySome = function(callBackFunction) {
