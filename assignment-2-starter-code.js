@@ -56,11 +56,11 @@ Array.prototype.myMap = function(callback) {
 let myArrayMap = [1,2,3,4,5];   // Array called by the function
 
 // Test with 1 parameter: element
-console.log("myMap (1 paramter): element");
+console.log("myMap (1 parameter): element");
 const myDouble = myArrayMap.myMap(x => x * 2);
 console.log(myDouble);   
 
-console.log("map (1 paramter): element");
+console.log("map (1 parameter): element");
 const double = myArrayMap.map(x => x * 2);   
 console.log(double); 
 
@@ -221,9 +221,53 @@ console.log("Original array:");
 console.log(pets);
 
 // INDEXOF //
-Array.prototype.myIndexOf = function() {
-
+Array.prototype.myIndexOf = function(string, index) {
+    let startingIndex = 0;
+    if (index != undefined){
+        startingIndex = index;
+    }
+    
+    for (let i = startingIndex; i < this.length; i++){
+        if(this[i] == undefined) continue;
+        if (this[i] == string){
+            return i;
+        }
+    }
+    return -1
 };
+
+const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+// TEST //
+// Test myIndexOf against the native indexOf to ensure that myIndexOf works as the same as indexOf
+
+// Test with 1 parameter: string
+console.log("myIndexOf (1 parameter): string");
+console.log(beasts.myIndexOf('bison')); // expected output: 1
+
+console.log("indexOf (1 parameter): string");
+console.log(beasts.indexOf('bison'));   // expected output: 1
+
+// Test with 1 parameter: string
+console.log("myIndexOf (1 parameter): string");
+console.log(beasts.myIndexOf('giraffe')); // expected output: -1
+console.log("indexOf (1 parameter): string");
+console.log(beasts.indexOf('giraffe')); // expected output: -1
+
+// Test with 2 parameters: string, index
+console.log("myIndexOf (2 parameters): string, index");
+console.log(beasts.myIndexOf('bison', 2));  // expected output: 4
+
+console.log("indexOf (2 parameters): string, index");
+console.log(beasts.indexOf('bison', 2));    // expected output: 4
+
+// Test with 2 parameters: string, index
+console.log("myIndexOf (2 parameters): string, index");
+console.log(beasts.myIndexOf('ant', 2));  // expected output: -1
+
+console.log("indexOf (2 parameters): string, index");
+console.log(beasts.indexOf('ant', 2));    // expected output: -1
+
 
 // PUSH //
 Array.prototype.myPush = function(...args) {  // Use rest parameter to accept any number of input arguments
@@ -262,16 +306,16 @@ Array.prototype.myLastIndexOf = function(item,index) {
 //test1-5
 var numbers = [2, 5, 9, 2];
 //test6-8
-var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+var letters = ['a', 'b', 'a', 'c', 'a', 'd'];
 
 console.log("TEST1 output:"+numbers.lastIndexOf(2));
 console.log("TEST2 output:"+numbers.lastIndexOf(7));
 console.log("TEST3 output:"+numbers.lastIndexOf(2, 3));
 console.log("TEST4 output:"+numbers.lastIndexOf(2, 2));
 console.log("TEST5 output:"+numbers.lastIndexOf(2, -2));
-console.log("TEST6 output:"+array.myLastIndexOf("a"));
-console.log("TEST7 output:"+array.myLastIndexOf("c"));
-console.log("TEST8 output:"+array.myLastIndexOf("a",3));
+console.log("TEST6 output:"+letters.myLastIndexOf("a"));
+console.log("TEST7 output:"+letters.myLastIndexOf("c"));
+console.log("TEST8 output:"+letters.myLastIndexOf("a",3));
 console.log("TEST1 expected : 3");
 console.log("TEST2 expected : -1");
 console.log("TEST3 expected : 3");
