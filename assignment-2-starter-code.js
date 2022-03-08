@@ -41,6 +41,7 @@ Array.prototype.myMap = function(callback) {
     const resultArray = [];
     // "this" keyword refers to the array being called.
     for (let i = 0; i < this.length; i++){
+        if (this[i] === undefined) continue;
         // callbackFn can take up to 3 input parameters:
         // element
         // element, index
@@ -53,30 +54,44 @@ Array.prototype.myMap = function(callback) {
 
 // TEST //
 // Test myMap against the native map to ensure that myMap works as the same as map
-let myArrayMap = [1,2,3,4,5];   // Array called by the function
+let myArrayMap = [1,2,,4,5];   // Array called by the function
 
 // Test with 1 parameter: element
 console.log("myMap (1 parameter): element");
 const myDouble = myArrayMap.myMap(x => x * 2);
-console.log(myDouble);   
+console.log(myDouble);  // expected output: [2, 4, 8, 10]
 
 console.log("map (1 parameter): element");
 const double = myArrayMap.map(x => x * 2);   
-console.log(double); 
+console.log(double);    // expected output: [2, 4, 8, 10] 
 
 // Test with 2 parameters: element, index
+//Multiple element with index
 console.log("myMap (2 parameters): element, index");
-myArrayMap.myMap((x,i) => console.log(x,i));
+const myTwoParam = myArrayMap.myMap((x, i) => {
+    return x * i;
+});
+console.log(myTwoParam);    // expected output: [0, 2, 12, 20]
 
 console.log("map (2 parameters): element, index");
-myArrayMap.map((x,i) => console.log(x,i));
+const twoParam = myArrayMap.map((x, i) => {
+    return x * i;
+});
+console.log(twoParam);  // expected output: [0, 2, 12, 20]
 
 // Test with 3 parameters: element, index, array
+// Multiply element by same index element 
 console.log("myMap (3 parameters): element, index, array");
-myArrayMap.myMap((x,i,myArrayMap) => console.log(x,i,myArrayMap));
+const myThreeParam = myArrayMap.myMap((x,i,myArrayMap) => {
+    return x * myArrayMap[i];
+});
+console.log(myThreeParam);  // expected output: [1, 4, 16, 25]
 
-console.log("map (3 parameters): element, index, array");
-myArrayMap.map((x,i,myArrayMap) => console.log(x,i,myArrayMap));
+console.log("myMap (3 parameters): element, index, array");
+const threeParam = myArrayMap.map((x,i,myArrayMap) => {
+    return x * myArrayMap[i];
+});
+console.log(threeParam);    // expected output: [1, 4, 16, 25]
 
 // SOME //
 Array.prototype.mySome = function(callBackFunction) {
