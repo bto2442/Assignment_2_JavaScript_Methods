@@ -10,6 +10,7 @@ Array.prototype.myEach = function (callbackFn) {
     }
 };
 
+/*
 // TEST //
 // Test myEach against the native forEach to ensure that myEach works as the same as forEach
 let myArray = [1,2,,4,5];   // Array called by the function
@@ -35,6 +36,7 @@ myArray.forEach((x,i,myArray) => console.log(x,i,myArray));   // Parameter: (x,i
 // Original array is not affected
 console.log("Original array:");
 console.log(myArray);
+*/
 
 // MAP //
 Array.prototype.myMap = function(callback) {
@@ -52,6 +54,7 @@ Array.prototype.myMap = function(callback) {
     return resultArray;
 };
 
+/*
 // TEST //
 // Test myMap against the native map to ensure that myMap works as the same as map
 let myArrayMap = [1,2,,4,5];   // Array called by the function
@@ -92,6 +95,7 @@ const threeParam = myArrayMap.map((x,i,myArrayMap) => {
     return x * myArrayMap[i];
 });
 console.log(threeParam);    // expected output: [1, 4, 16, 25]
+*/
 
 // SOME //
 Array.prototype.mySome = function(callBackFunction) {
@@ -102,6 +106,7 @@ Array.prototype.mySome = function(callBackFunction) {
     return false;
 };
 
+/*
 //TEST1
 const array = [1, 2, 3, 4, 5];
 const even = (element) => element % 2 === 0;
@@ -128,7 +133,7 @@ console.log("TEST3 expected : true");
 console.log("TEST4 expected : false");
 console.log("TEST5 expected : true");
 //SOME END//
-
+*/
 
 // REDUCE //
 Array.prototype.myReduce = function(reduceFnc,initialValue) {
@@ -149,6 +154,7 @@ Array.prototype.myReduce = function(reduceFnc,initialValue) {
     return total;
 };
 
+/*
 // TEST //
 // Test myReduce against the native reduce to ensure that myReduce works as the same as reduce
 
@@ -188,7 +194,7 @@ console.log(sumWithInitial2);
 
 console.log("Original array:");
 console.log(myArrayReduce); 
-
+*/
 
 // INCLUDES //
 Array.prototype.myIncludes = function(include) {
@@ -200,6 +206,7 @@ Array.prototype.myIncludes = function(include) {
     return false;
 };
 
+/*
 // TEST //
 // Test myIncludes against the native includes to ensure that myIncludes works as the same as includes
 
@@ -234,6 +241,7 @@ console.log(pets.myIncludes('at'));
 // expected output: false
 console.log("Original array:");
 console.log(pets);
+*/
 
 // INDEXOF //
 Array.prototype.myIndexOf = function(string, index) {
@@ -251,6 +259,7 @@ Array.prototype.myIndexOf = function(string, index) {
     return -1
 };
 
+/*
 const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
 
 // TEST //
@@ -282,7 +291,7 @@ console.log(beasts.myIndexOf('ant', 2));  // expected output: -1
 
 console.log("indexOf (2 parameters): string, index");
 console.log(beasts.indexOf('ant', 2));    // expected output: -1
-
+*/
 
 // PUSH //
 Array.prototype.myPush = function(...args) {  // Use rest parameter to accept any number of input arguments
@@ -296,6 +305,7 @@ Array.prototype.myPush = function(...args) {  // Use rest parameter to accept an
     return this.length;  // Return new length of "this" array
 };
 
+/*
 // TEST //
 // Test myPush against the native Push to ensure that myPush works as the same as Push
 let myArrayPush = [1,2,3,4,5];   // Array called by the function
@@ -307,6 +317,7 @@ myArray = [1,2,3,4,5];   // Array called by the function
 console.log("Push:");
 console.log(myArrayPush.push(6,7,8));   // Output returned array length
 console.log(myArrayPush);   // Output [1,2,3,4,5,6,7,8]
+*/
 
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function(item,index) {
@@ -318,6 +329,7 @@ Array.prototype.myLastIndexOf = function(item,index) {
     return -1;
 };
 
+/*
 //test1-5
 var numbers = [2, 5, 9, 2];
 //test6-8
@@ -340,6 +352,7 @@ console.log("TEST6 expected : 4");
 console.log("TEST7 expected : 3");
 console.log("TEST8 expected : 2");
 // LASTINDEXOF END //
+*/
 
 // KEYS //
 Object.myKeys = function(obj) {
